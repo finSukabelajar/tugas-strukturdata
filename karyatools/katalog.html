@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Katalog Produk - KaryaTools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/katalog.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Bebas Ongkir Pengiriman Pertama • Garansi Resmi Pabrikan</span>
+      <div class="topbar__links">
+        <a href="#">Pusat Bantuan</a>
+        <a href="#">Mitra Kontraktor & Arsitek</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">K</span>
+        <span class="logo__text"><span><strong>Karya</strong>Tools</span><small>INDUSTRIAL & BUILD</small></span>
+      </a>
+
+      <nav class="menu" id="menu">
+        <a href="index.html">Beranda</a>
+        <a href="katalog.html" class="active">Katalog Produk</a>
+        <a href="index.html#kategori">Kategori</a>
+        <a href="index.html#tentang">Tentang Kami</a>
+      </nav>
+
+      <form class="search" id="searchForm">
+        <input type="search" id="searchInput" placeholder="Cari perkakas atau material" aria-label="Cari produk">
+      </form>
+
+      <div class="actions">
+        <button class="icon-btn" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
+        <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">🛒<span class="badge" id="cartCount">0</span></a>
+        <a href="#" class="account"><span class="avatar">👤</span><span>Akun Mitra<br><strong>Masuk / Daftar</strong></span></a>
+        <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container cat-page">
+    <nav class="crumb"><a href="index.html">Beranda</a> › <span>Katalog Produk</span></nav>
+
+    <div class="cat-head">
+      <div>
+        <span class="eyebrow">Katalog Resmi</span>
+        <h1>Katalog Produk</h1>
+        <p id="resultInfo"></p>
+      </div>
+      <div class="cat-tools">
+        <button class="btn btn--soft btn--sm filter-toggle" id="filterToggle">☰ Filter</button>
+        <label class="sort">
+          <span>Urutkan</span>
+          <select id="sortSelect">
+            <option value="relevan">Paling Relevan</option>
+            <option value="termurah">Harga Terendah</option>
+            <option value="termahal">Harga Tertinggi</option>
+            <option value="rating">Rating Tertinggi</option>
+            <option value="ulasan">Ulasan Terbanyak</option>
+            <option value="nama">Nama A–Z</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="chips" id="chips"></div>
+
+    <div class="cat-layout">
+      <aside class="filters" id="filters">
+        <div class="filters__head">
+          <h2>Filter</h2>
+          <button class="link-btn" id="resetBtn">Reset</button>
+        </div>
+
+        <div class="fgroup" style="border-top:none;margin-top:0;padding-top:0">
+          <h3>Kategori</h3>
+          <div id="fKategori"></div>
+        </div>
+
+        <div class="fgroup">
+          <h3>Rentang Harga</h3>
+          <div class="price-row">
+            <input type="number" id="hargaMin" placeholder="Min" min="0" aria-label="Harga minimum">
+            <span>–</span>
+            <input type="number" id="hargaMax" placeholder="Maks" min="0" aria-label="Harga maksimum">
+          </div>
+          <div class="presets" id="presets">
+            <button data-min="0" data-max="100000">&lt; 100 rb</button>
+            <button data-min="100000" data-max="1000000">100 rb – 1 jt</button>
+            <button data-min="1000000" data-max="">&gt; 1 jt</button>
+          </div>
+        </div>
+
+        <div class="fgroup">
+          <h3>Rating Minimum</h3>
+          <label class="check"><input type="radio" name="rating" value="0" checked><span>Semua rating</span></label>
+          <label class="check"><input type="radio" name="rating" value="4.5"><span>★ 4.5 ke atas</span></label>
+          <label class="check"><input type="radio" name="rating" value="4.8"><span>★ 4.8 ke atas</span></label>
+        </div>
+
+        <div class="fgroup">
+          <h3>Merek</h3>
+          <div id="fMerek"></div>
+        </div>
+      </aside>
+
+      <section>
+        <div class="products" id="productGrid"></div>
+        <div class="empty-state" id="emptyMsg" hidden>
+          <h3>Produk tidak ditemukan</h3>
+          <p>Coba ubah kata kunci atau longgarkan filter yang dipakai.</p>
+          <button class="btn btn--primary" id="emptyReset">Reset Filter</button>
+        </div>
+        <nav class="pager" id="pager" aria-label="Halaman"></nav>
+      </section>
+    </div>
+  </main>
+
+  <!-- FOOTER: salin seluruh blok <footer class="footer">...</footer> dari index.html ke sini -->
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/katalog.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keranjang Belanja - KaryaTools</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/cart.css">
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <span>Bebas Ongkir Pengiriman Pertama • Garansi Resmi Pabrikan</span>
+      <div class="topbar__links">
+        <a href="#">Pusat Bantuan</a>
+        <a href="#">Mitra Kontraktor & Arsitek</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="navbar">
+    <div class="container navbar__inner">
+      <a href="index.html" class="logo">
+        <span class="logo__mark">K</span>
+        <span class="logo__text"><span><strong>Karya</strong>Tools</span><small>INDUSTRIAL & BUILD</small></span>
+      </a>
+
+      <nav class="menu" id="menu">
+        <a href="index.html#beranda">Beranda</a>
+        <a href="katalog.html">Katalog Produk</a>
+        <a href="index.html#kategori">Kategori</a>
+        <a href="index.html#tentang">Tentang Kami</a>
+      </nav>
+
+      <form class="search" action="index.html" method="get">
+        <input type="search" name="q" placeholder="Cari perkakas atau material" aria-label="Cari produk">
+      </form>
+
+      <div class="actions">
+        <button class="icon-btn" aria-label="Wishlist">♡<span class="badge" id="wishCount">0</span></button>
+        <a href="keranjang.html" class="icon-btn" aria-label="Keranjang">🛒<span class="badge" id="cartCount">0</span></a>
+        <a href="#" class="account"><span class="avatar">👤</span><span>Akun Mitra<br><strong>Masuk / Daftar</strong></span></a>
+        <button class="hamburger" id="hamburger" aria-label="Buka menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container cart-page">
+    <div class="cart-head">
+      <div>
+        <span class="eyebrow">Pengadaan Cepat • <em>Langkah 1 dari 2</em></span>
+        <h1>Keranjang Belanja</h1>
+        <p id="cartSubtitle"></p>
+      </div>
+      <span class="verified">🛡 Mitra Pro B2B Terverifikasi</span>
+    </div>
+
+    <div class="cart-layout">
+      <div class="cart-main">
+
+        <div class="block-head"><h2>Daftar Material & Perkakas</h2><small id="orderId"></small></div>
+        <div id="cartItems"></div>
+
+        <div class="block-head"><h2>Alamat Pengiriman Cepat</h2><small>Tujuan Drop Logistik</small></div>
+        <div class="addr">
+          <span class="addr__pin">📍</span>
+          <div class="addr__body">
+            <h3>Proyek Villa Gandaria (Utama) <span class="pill">DEFAULT</span></h3>
+            <p>Jl. Gandaria Tengah III No. 14, RT 02/RW 03, Kramat Pela, Kebayoran Baru, Jakarta Selatan 12130</p>
+            <p>Penerima: Pak Hendra (Site Manager) • +62 812-9844-9011</p>
+          </div>
+          <button class="btn btn--soft btn--sm" id="editAddr">✎ Ubah Alamat</button>
+        </div>
+
+        <div class="block-head"><h2>Metode Pengiriman</h2><small>Armada Terproteksi Asuransi</small></div>
+        <div class="ship">
+          <label class="ship__opt" id="optReguler">
+            <input type="radio" name="ship" value="reguler">
+            <div class="ship__body">
+              <div class="ship__row"><span>Reguler Armada Ringan</span><b>Rp 35.000</b></div>
+              <p>Estimasi 2–3 Hari Kerja. Sesuai muatan paket di bawah 25 kg.</p>
+              <small id="regulerNote">🚚 JNE Cargo / SiCepat B2B</small>
+            </div>
+          </label>
+          <label class="ship__opt" id="optTruk">
+            <input type="radio" name="ship" value="truk">
+            <div class="ship__body">
+              <div class="ship__row"><span>Kargo Proyek / Truk</span><b>Rp 150.000</b></div>
+              <p>Tiba Besok (1 Hari). Direkomendasikan untuk muatan semen & mesin.</p>
+              <small>🚛 Armada CDD KaryaTools Direct Site</small>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <aside class="cart-side">
+        <div class="sum">
+          <div class="sum__head">
+            <h2>Ringkasan Pembayaran</h2>
+            <span class="tag-mono">B2B Checkout</span>
+          </div>
+
+          <label for="couponInput">Kupon Mitra / Kode Tender</label>
+          <div class="coupon">
+            <input id="couponInput" placeholder="Masukkan kode" autocomplete="off">
+            <button class="btn btn--soft btn--sm" id="couponBtn">Terapkan</button>
+          </div>
+          <p class="coupon__msg" id="couponMsg"></p>
+
+          <dl class="rows">
+            <div><dt id="lblSub">Subtotal Produk</dt><dd id="sumSub">Rp 0</dd></div>
+            <div><dt>Ongkos Kirim</dt><dd id="sumShip">Rp 0</dd></div>
+            <div class="disc"><dt>Diskon Voucher</dt><dd id="sumDisc">Rp 0</dd></div>
+            <div class="ppn"><dt>PPN 11% (Termasuk)</dt><dd id="sumPpn">Rp 0</dd></div>
+          </dl>
+
+          <div class="total">
+            <div><small>TOTAL PEMBAYARAN</small><strong id="sumTotal">Rp 0</strong></div>
+            <div class="top">Tempo Kredit<b>Tersedia (TOP 30)</b></div>
+          </div>
+
+          <button class="btn btn--primary btn--block" id="checkoutBtn">Lanjut ke Pembayaran →</button>
+          <a href="index.html#produk" class="add-more">+ Tambah Kebutuhan Material Lain</a>
+          <p class="secure">🔒 Transaksi aman terenkripsi • Garansi uang kembali</p>
+        </div>
+
+        <a href="#" class="quote" id="quoteBtn">
+          <span class="quote__icon">🎧</span>
+          <span><strong>Butuh Surat Penawaran Resmi?</strong><br>Unduh draft Quotation langsung untuk bagian Finance.</span>
+        </a>
+      </aside>
+    </div>
+  </main>
+
+  <!-- FOOTER: salin seluruh blok <footer class="footer">...</footer> dari index.html ke sini -->
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/cart.js"></script>
+</body>
+</html>
